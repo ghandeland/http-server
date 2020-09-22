@@ -11,14 +11,14 @@ class HttpClientTest {
     void shouldReturnSuccessfulStatusCode() throws IOException {
         HttpClient client = makeEchoRequest("/echo");
 
-        assertEquals(200, client.getResponseCode());
+        assertEquals(200, client.getStatusCode());
     }
 
     @Test
     void shouldReturnUnsuccessfulStatusCode() throws IOException {
         HttpClient client = makeEchoRequest("/echo?status=404");
 
-        assertEquals(404, client.getResponseCode());
+        assertEquals(404, client.getStatusCode());
     }
 
     @Test
