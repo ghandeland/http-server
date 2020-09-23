@@ -9,7 +9,6 @@ public class HttpServer {
     private final ServerSocket serverSocket;
 
     public HttpServer(int port) throws IOException {
-
         this.serverSocket = new ServerSocket(port);
 
         new Thread(() -> {
@@ -20,8 +19,9 @@ public class HttpServer {
                 e.printStackTrace();
             }
         }).start();
-
     }
+
+
 
     public static void main(String[] args) throws IOException {
 
@@ -30,6 +30,7 @@ public class HttpServer {
     private void handleRequest(Socket socket) throws IOException {
         String responseCode = "200";
         String requestLine = HttpClient.readLine(socket);
+
         System.out.println(requestLine);
         String requestTarget = requestLine.split(" ")[1];
         int questionPos = requestTarget.indexOf('?');

@@ -18,10 +18,19 @@ public class HttpServerTest {
 
     @Test
     void shouldReturnUnsuccessfulErrorCode() throws IOException {
-
         HttpServer server = new HttpServer(10002);
         HttpClient client = new HttpClient("localhost", 10002, "echo/?status=404");
         assertEquals(404, client.getStatusCode());
     }
+
+    /*@Test
+    void shouldReadResponseCode() {
+        HttpServer server = new HttpServer(0);
+        server.start();
+        int port = server.getActualPort();
+        HttpClient client = new HttpClient("localhost", port, "");
+        HttpResponse response = client.executeRequest();
+        assertEquals(200, response.getResponseCode());
+    }*/
 
 }
